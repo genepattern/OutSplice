@@ -4,6 +4,7 @@ print("- installing")
 install.packages("BiocManager")
 
 install.packages(c("getopt", "optparse" ))
+install.packages('gplots')
 
 BiocManager::install("limma")
 BiocManager::install("GenomicRanges")

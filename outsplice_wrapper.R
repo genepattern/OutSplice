@@ -47,6 +47,7 @@ option_list <- list(
   make_option("--out.file.prefix", dest="out.file.prefix"),
   make_option("--dir", dest="dir")  ,
   make_option("--filter.sex", dest="filter.sex", type="logical"),
+  make_option("----preset.genome.annotation", dest="preset.genome.annotation"),
   make_option("--genome", dest="genome"),
   make_option("--annotation", dest="annotation"),
   make_option("--txdb", dest="txdb"),
@@ -71,6 +72,38 @@ if (!(endsWith(outdir, '/'))){
    outdir = paste(outdir, '/', sep="")
 }
 
+# set the default genome and annotations and then override if the optional overrides are provided
+if (tolower(opt$preset.genome.annotation) == tolower("hg19")){
+    genome =  "Homo.sapiens"
+    annotation = "org.Hs.eg.db"
+    txdb = "TxDb.Hsapiens.UCSC.hg19.knownGene"
+} else if (tolower(opt$preset.genome.annotation) == tolower("hg38")){
+    genome = "Homo.sapiens"
+    annotation = "org.Hs.eg.db"
+    txdb = "TxDb.Hsapiens.UCSC.hg38.knownGene"
+} else if (if (tolower(opt$preset.genome.annotation) == tolower("mm39")){
+    genome = "Mus.musculus"
+    annotation = "org.Mm.eg.db"
+    txdb = "TxDb.Mmusculus.UCSC.mm39.refGene"
+} else if (if (tolower(opt$preset.genome.annotation) == tolower("mm10")){
+    genome = "Mus.musculus"
+    annotation = "org.Mm.eg.db"
+    txdb = "TxDb.Mmusculus.UCSC.mm10.knownGene"
+}
+
+if !(is.emptyString(opt$genome)) {
+     genome = opt$genome
+}
+if !(is.emptyString(opt$annotation)) {
+     annotation = opt$annotation
+}
+if !(is.emptyString(opt$txdb)) {
+     txdb = opt$txdb
+}
+
+
+
+
 # read the second line of the junction file to see if its TCGA format where the second line
 # will start with 'junction'
 con <- file(junction,"r")
@@ -78,7 +111,7 @@ first_lines <- readLines(con,n=2)
 close(con)
 
 if (startsWith(first_lines[2], "junction")){
-    OutSplice_TCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+    OutSplice_TCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex, genome, annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
 } else { 
     OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)

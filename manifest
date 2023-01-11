@@ -1,7 +1,7 @@
-# OutSplice  urn:lsid:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal:genepatternmodules:674:2
-#Wed Jan 11 22:38:45 UTC 2023
+# OutSplice  urn:lsid:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal:genepatternmodules:674:3
+#Wed Jan 11 23:08:43 UTC 2023
 JVMLevel=
-LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:674\:2
+LSID=urn\:lsid\:8080.gpserver.ip-172-31-26-71.ip-172-31-26-71.ec2.internal\:genepatternmodules\:674\:3
 author=Joseph Bendik;UCSD
 categories=beta
 commandLine=RScript /build/source/outsplice_wrapper.R <junction.file> <rsem.file> <rawcounts.file> --out.file.prefix  <out.file.prefix> <filter.sex> <genome> <annotation> <txdb> <offsets.value> <correction.setting> <p.value> --sample.labels.file  <sample.labels.file> --preset.genome.annotation  <preset.genome.annotations>
@@ -54,7 +54,7 @@ p12_optional=
 p12_prefix=
 p12_prefix_when_specified=
 p12_type=java.lang.String
-p12_value=
+p12_value=fdr\=fdr;holm\=holm;hochberg\=hochberg;hommel\=hommel;bonferroni\=bonferroni;BH\=BH;BY\=BY
 p13_MODE=
 p13_TYPE=Floating Point
 p13_default_value=.05
@@ -145,7 +145,7 @@ p6_optional=
 p6_prefix=
 p6_prefix_when_specified=
 p6_type=java.lang.String
-p6_value=Hg19\=Hg19;Hg38\=Hg38;mm39\=mm39
+p6_value=Hg19\=Hg19;Hg38\=Hg38;mm39\=mm39;mm10\=mm10
 p7_MODE=
 p7_TYPE=TEXT
 p7_default_value=
@@ -174,7 +174,7 @@ p8_type=java.lang.String
 p8_value=
 p9_MODE=
 p9_TYPE=TEXT
-p9_default_value=TxDb.Hsapiens.UCSC.hg38.knownGene
+p9_default_value=
 p9_description=The bioconductor package containing the transcript annotations to use. e.g. "TxDb.Hsapiens.UCSC.hg38.knownGene", or  "TxDb.Hsapiens.UCSC.hg19.knownGene" for TCGA data.
 p9_fileFormat=
 p9_flag=--txdb 
