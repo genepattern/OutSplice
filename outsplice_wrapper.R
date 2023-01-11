@@ -8,7 +8,6 @@
 ## This software is supplied without any warranty or guaranteed support
 ## whatsoever. Neither the Broad Institute nor MIT can be responsible for its
 ## use, misuse, or functionality.
-print("Running outsplice_wrapper.R")
 
 # Load any packages used to in our code to interface with GenePattern.
 # Note the use of suppressMessages and suppressWarnings here.  The package
@@ -60,11 +59,7 @@ option_list <- list(
 # Parse the command line arguments with the option list, printing the result
 # to give a record as with sessionInfo.
 opt <- parse_args(OptionParser(option_list=option_list), positional_arguments=TRUE, args=arguments)
-print(opt)
 opts <- opt$options
-print("========= OPTIONS READ")
-## example of referncing arguments
-# report_address = paste0('./', opts$output.file,"_report/")
 
 junction = opts$junction.file
 rawcounts = opts$rawcounts.file
@@ -76,14 +71,19 @@ if (!(endsWith(outdir, '/'))){
    outdir = paste(outdir, '/', sep="")
 }
 
-print(paste("========= junction:  ", junction))
-print(paste("========= dir:  ", outdir))
+# read the second line of the junction file to see if its TCGA format where the second line
+# will start with 'junction'
+con <- file(junction,"r")
+first_lines <- readLines(con,n=2)
+close(con)
 
+if (startsWith(first_lines[2], "junction")){
+    OutSplice_TCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
-OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+} else { 
+    OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
-#OutSplice(junction, RSEM, rawcounts, sample_labels, out_file_prefix, dir, filterSex=T, genome='Homo.sapiens', annotation='org.Hs.eg.db', TxDb='TxDb.Hspaiens.UCSC/hg38.knownGene', offsets_value=0.00001, correction_setting='fdr', p_value=0.05)
-
+}
 
 
 
