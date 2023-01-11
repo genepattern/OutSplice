@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Inputs and Outputs ",
+        "description": "Input files and output specification.",
+        "hidden": false,
+        "parameters": [
+            "junction.file",
+            "rsem.file",
+            "rawcounts.file",
+            "sample.labels.file",
+            "out.file.prefix"
+        ]
+    },
+    {
+        "name": "Genome Annotations",
+        "description": "Genome and annotations to use, either a preset or provide override values.",
+        "hidden": false,
+        "parameters": [
+            "preset.genome.annotations",
+            "genome",
+            "annotation",
+            "txdb"
+        ]
+    },
+    {
+        "name": "Advanced Parameters",
+        "description": "Additional tuning parameters.",
+        "hidden": false,
+        "parameters": [
+            "filter.sex",
+            "offsets.value",
+            "correction.setting",
+            "p.value"
+        ]
+    }
+]
