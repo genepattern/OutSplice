@@ -8,6 +8,7 @@
 ## This software is supplied without any warranty or guaranteed support
 ## whatsoever. Neither the Broad Institute nor MIT can be responsible for its
 ## use, misuse, or functionality.
+print("Running outsplice_wrapper.R")
 
 # Load any packages used to in our code to interface with GenePattern.
 # Note the use of suppressMessages and suppressWarnings here.  The package
@@ -21,8 +22,8 @@ suppressMessages(suppressWarnings(library(GenomicRanges)))
 suppressMessages(suppressWarnings(library(TxDb.Hsapiens.UCSC.hg38.knownGene)))
 suppressMessages(suppressWarnings(library(org.Hs.eg.db)))
 suppressMessages(suppressWarnings(library(Homo.sapiens)))
+suppressMessages(suppressWarnings(library(OutSplice)))
 
-suppressMessages(suppressWarnings(source("/build/source/OutSplice/TCGA_SplicingOutliers_Function.R")))
 
 # Print the sessionInfo so that there is a listing of loaded packages, 
 # the current version of R, and other environmental information in our
@@ -44,14 +45,14 @@ option_list <- list(
   make_option("--rsem.file", dest="rsem.file"),
   make_option("--rawcounts.file", dest="rawcounts.file"),
   make_option("--sample.labels.file", dest="sample.labels.file"),
-  make_option("--out.file.prefix", dest="out.file.prefix") #, type="integer"),
-  make_option("--dir", dest="dir")  , #type="double"),
+  make_option("--out.file.prefix", dest="out.file.prefix"),
+  make_option("--dir", dest="dir")  ,
   make_option("--filter.sex", dest="filter.sex", type="logical"),
-  make_option("--genome", dest="genome")
-  make_option("--annotation", dest="annotation")
-  make_option("--txdb", dest="txdb")
-  make_option("--offsets.value", dest="offsets.value", type="double")
-  make_option("--correction.setting", dest="correction.setting")
+  make_option("--genome", dest="genome"),
+  make_option("--annotation", dest="annotation"),
+  make_option("--txdb", dest="txdb"),
+  make_option("--offsets.value", dest="offsets.value", type="double"),
+  make_option("--correction.setting", dest="correction.setting"),
   make_option("--p.value", dest="p.value", type="double")
 
 )
@@ -61,16 +62,25 @@ option_list <- list(
 opt <- parse_args(OptionParser(option_list=option_list), positional_arguments=TRUE, args=arguments)
 print(opt)
 opts <- opt$options
-
+print("========= OPTIONS READ")
 ## example of referncing arguments
 # report_address = paste0('./', opts$output.file,"_report/")
 
-# junction = #READ JUNCTION FROM opts$junction.file
-# rawcounts = #READ RAWCOUNTS FROM opts$rawcounts.file
-# rsem = #READ RSEM FROM opts$rsem.file
-# sample_labels - #READ SAMPLE LABELS FROM $opts.sample.labels.file
+junction = opts$junction.file
+rawcounts = opts$rawcounts.file
+rsem = opts$rsem.file
+sample_labels = opts$sample.labels.file
+outdir = opts$dir
 
-OutSplice(junction, RSEM, rawcounts, sample_labels, opts$out.file.prefix, opts$dir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+if (!(endsWith(outdir, '/'))){
+   outdir = paste(outdir, '/', sep="")
+}
+
+print(paste("========= junction:  ", junction))
+print(paste("========= dir:  ", outdir))
+
+
+OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
 #OutSplice(junction, RSEM, rawcounts, sample_labels, out_file_prefix, dir, filterSex=T, genome='Homo.sapiens', annotation='org.Hs.eg.db', TxDb='TxDb.Hspaiens.UCSC/hg38.knownGene', offsets_value=0.00001, correction_setting='fdr', p_value=0.05)
 
