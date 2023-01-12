@@ -1,8 +1,10 @@
 # OutSplice v1
 
-** Author:** Joseph Bendik (jbendik@health.ucsd.edu)
-** Adapted as a GenePattern Module by:** Ted Liefeld (jliefeld@cloud.ucsd.edu)
-** Algorithm Version: ** 1.0
+**Author:** Joseph Bendik (jbendik@health.ucsd.edu)
+
+**Adapted as a GenePattern Module by:** Ted Liefeld (jliefeld@cloud.ucsd.edu)
+
+**Algorithm Version: ** 1.0
 
 ## Introduction
 
