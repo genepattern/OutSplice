@@ -45,12 +45,12 @@ option_list <- list(
   make_option("--rawcounts.file", dest="rawcounts.file"),
   make_option("--sample.labels.file", dest="sample.labels.file"),
   make_option("--out.file.prefix", dest="out.file.prefix"),
-  make_option("--dir", dest="dir")  ,
+  make_option("--dir", dest="dir", default="")  ,
   make_option("--filter.sex", dest="filter.sex", type="logical"),
-  make_option("----preset.genome.annotation", dest="preset.genome.annotation"),
-  make_option("--genome", dest="genome"),
-  make_option("--annotation", dest="annotation"),
-  make_option("--txdb", dest="txdb"),
+  make_option("--preset.genome.annotation", dest="preset.genome.annotation", default="hg38"),
+  make_option("--genome", dest="genome", default=""),
+  make_option("--annotation", dest="annotation",default=""),
+  make_option("--txdb", dest="txdb",default=""),
   make_option("--offsets.value", dest="offsets.value", type="double"),
   make_option("--correction.setting", dest="correction.setting"),
   make_option("--p.value", dest="p.value", type="double")
@@ -61,6 +61,7 @@ option_list <- list(
 # to give a record as with sessionInfo.
 opt <- parse_args(OptionParser(option_list=option_list), positional_arguments=TRUE, args=arguments)
 opts <- opt$options
+print(opts)
 
 junction = opts$junction.file
 rawcounts = opts$rawcounts.file
@@ -68,40 +69,50 @@ rsem = opts$rsem.file
 sample_labels = opts$sample.labels.file
 outdir = opts$dir
 
+if (is.emptyString(outdir)){
+    outdir = getwd()
+}
+
 if (!(endsWith(outdir, '/'))){
    outdir = paste(outdir, '/', sep="")
 }
 
+print(opts$preset.genome.annotation)
+
 # set the default genome and annotations and then override if the optional overrides are provided
-if (tolower(opt$preset.genome.annotation) == tolower("hg19")){
+if (tolower(opts$preset.genome.annotation) == tolower("hg19")){
+    # --genome Homo.sapiens --annotation org.Hs.eg.db  --txdb TxDb.Hsapiens.UCSC.hg38.knownGene
     genome =  "Homo.sapiens"
     annotation = "org.Hs.eg.db"
     txdb = "TxDb.Hsapiens.UCSC.hg19.knownGene"
-} else if (tolower(opt$preset.genome.annotation) == tolower("hg38")){
+} else if (tolower(opts$preset.genome.annotation) == tolower("hg38")){
     genome = "Homo.sapiens"
     annotation = "org.Hs.eg.db"
     txdb = "TxDb.Hsapiens.UCSC.hg38.knownGene"
-} else if (if (tolower(opt$preset.genome.annotation) == tolower("mm39")){
+} else if (tolower(opts$preset.genome.annotation) == tolower("mm39")){
     genome = "Mus.musculus"
     annotation = "org.Mm.eg.db"
     txdb = "TxDb.Mmusculus.UCSC.mm39.refGene"
-} else if (if (tolower(opt$preset.genome.annotation) == tolower("mm10")){
+} else if (tolower(opts$preset.genome.annotation) == tolower("mm10")){
     genome = "Mus.musculus"
     annotation = "org.Mm.eg.db"
     txdb = "TxDb.Mmusculus.UCSC.mm10.knownGene"
 }
 
-if !(is.emptyString(opt$genome)) {
-     genome = opt$genome
+if (!(is.emptyString(opts$genome))) {
+     genome = opts$genome
 }
-if !(is.emptyString(opt$annotation)) {
-     annotation = opt$annotation
+if (!(is.emptyString(opts$annotation))) {
+     annotation = opts$annotation
 }
-if !(is.emptyString(opt$txdb)) {
-     txdb = opt$txdb
+if (!(is.emptyString(opts$txdb))) {
+     txdb = opts$txdb
 }
-
-
+print("=====")
+print(genome)
+print(annotation)
+print(txdb)
+print("=====")
 
 
 # read the second line of the junction file to see if its TCGA format where the second line
@@ -114,7 +125,7 @@ if (startsWith(first_lines[2], "junction")){
     OutSplice_TCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex, genome, annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
 } else { 
-    OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, opts$genome, annotation=opts$annotation, TxDb=opts$txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+    OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, genome, annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
 
 }
 
