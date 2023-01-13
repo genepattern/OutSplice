@@ -165,11 +165,17 @@ expression normalized by gene expression.
 ## Output Files
 
   1.ASE.type: <output prefix>_event_types.txt.  Tab-separated text file of junction events labeled by type (skipping, insertion, or deletion).
-  2.FisherAnalyses:  <output prefix>FisherAnalyses.txt.  Tab-separated text file containing a matrix of junction events containing the number of outliers in the tumor group (outRank), event ranking based on the number of outliers  and tumor under/over expression (var), the Fisher P-Value for under-expressed   events (FisherP1), and the Fisher P-Value for over-expressed events (FisherP2)
-  3. geneAnnot:  <output prefix>gene_annotations.txt.  Tab-separated text file containing object containing gene names corresponding to each junction region.
-  4.  <output prefix>TumorOverExpression.txt.  Tab-separated text file of junction outliers.  A list containing the logical matrix of TumorOverExpression  "True" indicates an over-expressed event.
-  5.  <output prefix>TumorUnderExpression.txt.  Tab-separated text file of junction outliers. A list containing the logical matrix of TumorUnderExpression  "True" indicates an under-expressed event.
-  6. splice_burden: splice_burden.txt. A matrix containing the number of Fisher-P significant  over-expressed, under-expressed, and total number of outliers per sample
+ 
+   2.FisherAnalyses:  <output prefix>FisherAnalyses.txt.  Tab-separated text file containing a matrix of junction events containing the number of outliers in the tumor group (outRank), event ranking based on the number of outliers  and tumor under/over expression (var), the Fisher P-Value for under-expressed   events (FisherP1), and the Fisher P-Value for over-expressed events (FisherP2)
+   
+   3. geneAnnot:  <output prefix>gene_annotations.txt.  Tab-separated text file containing object containing gene names corresponding to each junction region.
+
+   4.  <output prefix>TumorOverExpression.txt.  Tab-separated text file of junction outliers.  A list containing the logical matrix of TumorOverExpression  "True" indicates an over-expressed event.
+
+   5.  <output prefix>TumorUnderExpression.txt.  Tab-separated text file of junction outliers. A list containing the logical matrix of TumorUnderExpression  "True" indicates an under-expressed event.
+
+   6. splice_burden: splice_burden.txt. A matrix containing the number of Fisher-P significant  over-expressed, under-expressed, and total number of outliers per sample
+    
   7. An RData file with the following data:
 
   -ASE.type: junction events labeled by type (skipping, insertion, or deletion)
