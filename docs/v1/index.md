@@ -119,7 +119,7 @@ expression normalized by gene expression.
 
 ## Parameters
 
-* indicates required parameter
+<span style="color: red;">*</span> indicates required parameter
 
 ### Input and Output Parameters
 
