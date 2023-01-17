@@ -154,13 +154,13 @@ expression normalized by gene expression.
 
 ## Input Files
 
-1.   junction file  
-    junction counts file 
-2.  gene expression file  
-3. rawcounts file
-4. sample labels file
-    - A phenotype matrix, in tab-delimited text format, that designates which samples in the junction file belong to the tumor group 
-(labeled as "T") and the normal group (labeled as "F"). Please ensure the  matrix file contains a header row with the first column designating the sample names, and the second column designating the phenotype. If using TCGA data,  the two phenotypes are "tumor" and "normal." OutSplice_TCGA can automatically  infer the phenotype of TCGA data using the sample names.   
+1.  Junction file.  Tab delimited file containing junction counts.  First row has sample lables and following rows have chromosomal location or entrez gene ids with counts.  Alternatively TCGA formated junction files are also acceptable.  e.g. [example junctions file]([https://raw.githubusercontent.com/genepattern/OutSplice/develop/test/data/HNSC_junctions.txt](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_junctions.txt)), [example TCGA junctions file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_junctions.txt)  
+    
+2. Gene expression file. A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. First row has sample names and subsequent roqs include the data.  TCGA formatted files are also acceptable. e.g. [example gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_genes_normalized.txt), [example TCGA gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_genes_normalized.txt)   
+3. Rawcounts file. A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample. e.g. [summable raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt), [summed raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt)
+4. Sample labels file.  A phenotype matrix, in tab-delimited text format, that designates which samples in the junction file belong to the tumor group 
+(labeled as "T") and the normal group (labeled as "F"). Please ensure the  matrix file contains a header row with the first column designating the sample names, and the second column designating the phenotype. If using TCGA data,  the two phenotypes are "tumor" and "normal." OutSplice_TCGA can automatically  infer the phenotype of TCGA data using the sample names.  e.g. [example sample labels file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_pheno_table.txt)
+    -   
 
 ## Output Files
 
