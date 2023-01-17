@@ -1,7 +1,9 @@
 # OutSplice v1
 
 **Author(s):** Joseph Bendik, Sandhya Kalavacherla, Michael Considine, Bahman Afsari, Michael F. Ochs, Joseph Califano, Daria A. Gaykalova, Elana Fertig, Theresa Guo.  
+
 **Contact:** Joseph Bendik (jbendik@health.ucsd.edu)
+
 **Adapted as a GenePattern Module by:** Ted Liefeld (jliefeld@cloud.ucsd.edu)
 
 **Task Type:** Clasification
@@ -117,13 +119,15 @@ expression normalized by gene expression.
 
 ## Parameters
 
+* indicates required parameter
+
 ### Input and Output Parameters
 
 - **junction file**<span style="color: red;">*</span>
     - This is a tab-delimited text file containing a matrix of junction raw read counts.  
 - **gene expression file**<span style="color: red;">*</span>
     - A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. 
-- **rawcounts file**
+- **rawcounts file**<span style="color: red;">*</span>
     - A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample.
 - **sample labels file**
     - a matrix of phenotypes.
@@ -142,13 +146,13 @@ expression normalized by gene expression.
 
 ### Advanced Parameters
 
-- **filter sex**
+- **filter sex**<span style="color: red;">*</span>
     - When true, ignores sex chromosomes when generating results. True by default.
-- **offsets value**
+- **offsets value**<span style="color: red;">*</span>
     - The normalized junction expression threshold. Uses 0.00001 by default.
-- **correction setting**
+- **correction setting**<span style="color: red;">*</span>
     - The correction value to be used for p-value adjustment during Fisher analyses. Uses 'fdr' by default.  Allowed values are fdr, holm, hochberg, hommel, bonferonni, BH, BY.
-- **p value**
+- **p value**<span style="color: red;">*</span>
     - The significance threshold to use during Fisher analyses. Uses 0.05 by default.
 
 
