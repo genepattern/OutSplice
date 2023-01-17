@@ -165,88 +165,110 @@ expression normalized by gene expression.
 ## Output Files
 
   1.ASE.type: <output prefix>_event_types.txt.  Tab-separated text file of junction events with three columns, skipping, insertions, and  deletions.
-    e.g. ```
+    e.g. 
+```
 skipping	insertions	deletions
-chr1:165697358-165712404	FALSE	TRUE	FALSE
-chr1:46812747-46818540	FALSE	TRUE	FALSE
-chr1:17597477-17597562	FALSE	TRUE	FALSE
-chr1:17586253-17588628	FALSE	TRUE	FALSE
-    ...
-    ```
+
+    chr1:165697358-165712404	FALSE	TRUE	FALSE
+
+    chr1:46812747-46818540	FALSE	TRUE	FALSE
+
+    chr1:17597477-17597562	FALSE	TRUE	FALSE
+
+    chr1:17586253-17588628	FALSE	TRUE	FALSE
+```
+    
  
    2.FisherAnalyses:  <output prefix>FisherAnalyses.txt.  Tab-separated text file containing a matrix of junction events containing the number of outliers in the tumor group (outRank), event ranking based on the number of outliers  and tumor under/over expression (var), the Fisher P-Value for under-expressed   events (FisherP1), and the Fisher P-Value for over-expressed events (FisherP2). e.g.
-    ```
+    
+```
     	outRankTumor1	var1	FisherP1	outRankTumor2	var2	FisherP2
-chr1:14829-14970	0	2118	1	4	3702	0.774945321489357
-chr1:18369-18501	0	2119	1	7	2088	0.30315735058032
-chr1:18366-18913	0	2115	1	19	797	0.000725730597161921
-chr1:18554-18913	0	2111	1	11	791	0.0467915943592379
-    ...
-    ```
+
+    chr1:14829-14970	0	2118	1	4	3702	0.774945321489357
+
+    chr1:18369-18501	0	2119	1	7	2088	0.30315735058032
+
+    chr1:18366-18913	0	2115	1	19	797	0.000725730597161921
+
+    chr1:18554-18913	0	2111	1	11	791	0.0467915943592379  
+```
+
    
    3. geneAnnot:  <output prefix>gene_annotations.txt.  Tab-separated text file containing object containing gene names corresponding to each junction region. e.g. 
-    ```
+    
+```
     chr	start	end	width	SYMBOL	ENTREZID	skipping	insertions	deletions
-chr1:165697358-165712404	chr1	165697358	165712404	15047	ALDH9A1;LOC440700	223;440700	FALSE	TRUE	FALSE
-chr1:46812747-46818540	chr1	46812747	46818540	5794	CYP4B1	1580	FALSE	TRUE	FALSE
-chr1:17597477-17597562	chr1	17597477	17597562	86	ARHGEF10L	55160	FALSE	TRUE	FALSE
-chr1:17586253-17588628	chr1	17586253	17588628	2376	ARHGEF10L	55160	FALSE	TRUE	FALSE
-    ...
-    ```
+
+    chr1:165697358-165712404	chr1	165697358	165712404	15047	ALDH9A1;LOC440700	223;440700	FALSE	TRUE	FALSE
+
+    chr1:46812747-46818540	chr1	46812747	46818540	5794	CYP4B1	1580	FALSE	TRUE	FALSE
+
+    chr1:17597477-17597562	chr1	17597477	17597562	86	ARHGEF10L	55160	FALSE	TRUE	FALSE
+
+    chr1:17586253-17588628	chr1	17586253	17588628	2376	ARHGEF10L	55160	FALSE	TRUE	FALSE
+    
+```
 
    4.  <output prefix>TumorOverExpression.txt.  Tab-separated text file of junction outliers.  A list containing the logical matrix of TumorOverExpression  "True" indicates an over-expressed event. Each column represents one sample and each row has the row identifier and the event call for each sample. e.g.
-    ```
+    
+```
+    
     TCGA-BA-5152-01	TCGA-BA-6869-01	TCGA-BA-A6DL-01	TCGA-BB-4227-01	TCGA-BB-7864-01	TCGA-CN-4725-01	TCGA-CN-4727-01	TCGA-CN-4730-01	TCGA-CN-4731-01	TCGA-CN-4736-01	TCGA-CN-4739-01	TCGA-CN-6988-01	TCGA-CN-A49C-01	TCGA-CN-A63W-01	TCGA-CN-A641-01	TCGA-CQ-5327-01	TCGA-CQ-6227-01	TCGA-CQ-7065-01	TCGA-CQ-7069-01	TCGA-CQ-A4C9-01	TCGA-CR-5247-01	TCGA-CR-6477-01	TCGA-CR-6480-01	TCGA-CR-7364-01	TCGA-CR-7365-01	TCGA-CR-7369-01	TCGA-CR-7385-01	TCGA-CV-6952-01	TCGA-CV-6956-01	TCGA-CV-7089-01	TCGA-CV-7095-01	TCGA-CV-7242-01	TCGA-CV-7250-01	TCGA-CV-7253-01	TCGA-CV-7255-01	TCGA-CV-7409-01	TCGA-CV-7568-01	TCGA-CV-A45R-01	TCGA-CX-7086-01	TCGA-D6-A6EO-01	TCGA-F7-7848-01	TCGA-H7-A6C4-01	TCGA-HD-7917-01	TCGA-HD-8224-01	TCGA-IQ-7632-01	TCGA-P3-A5QF-01	TCGA-P3-A6T8-01	TCGA-TN-A7HJ-01	TCGA-UF-A719-01	TCGA-UF-A71D-01
-chr1:14829-14970	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-chr1:18369-18501	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE
 
-    ```
+    chr1:14829-14970	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+
+    chr1:18369-18501	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE
+
+```
 
    5.  <output prefix>TumorUnderExpression.txt.  Tab-separated text file of junction outliers. A list containing the logical matrix of TumorUnderExpression  "True" indicates an under-expressed event. Each column represents one sample and each row has the row identifier and the event call for each sample. e.g.
-    ```
-TCGA-BA-5152-01	TCGA-BA-6869-01	TCGA-BA-A6DL-01	TCGA-BB-4227-01	TCGA-BB-7864-01	TCGA-CN-4725-01	TCGA-CN-4727-01	TCGA-CN-4730-01	TCGA-CN-4731-01	TCGA-CN-4736-01	TCGA-CN-4739-01	TCGA-CN-6988-01	TCGA-CN-A49C-01	TCGA-CN-A63W-01	TCGA-CN-A641-01	TCGA-CQ-5327-01	TCGA-CQ-6227-01	TCGA-CQ-7065-01	TCGA-CQ-7069-01	TCGA-CQ-A4C9-01	TCGA-CR-5247-01	TCGA-CR-6477-01	TCGA-CR-6480-01	TCGA-CR-7364-01	TCGA-CR-7365-01	TCGA-CR-7369-01	TCGA-CR-7385-01	TCGA-CV-6952-01	TCGA-CV-6956-01	TCGA-CV-7089-01	TCGA-CV-7095-01	TCGA-CV-7242-01	TCGA-CV-7250-01	TCGA-CV-7253-01	TCGA-CV-7255-01	TCGA-CV-7409-01	TCGA-CV-7568-01	TCGA-CV-A45R-01	TCGA-CX-7086-01	TCGA-D6-A6EO-01	TCGA-F7-7848-01	TCGA-H7-A6C4-01	TCGA-HD-7917-01	TCGA-HD-8224-01	TCGA-IQ-7632-01	TCGA-P3-A5QF-01	TCGA-P3-A6T8-01	TCGA-TN-A7HJ-01	TCGA-UF-A719-01	TCGA-UF-A71D-01
-chr1:14829-14970	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-chr1:18369-18501	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-chr1:18366-18913	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
-chr1:18554-18913	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+```
+   TCGA-BA-5152-01	TCGA-BA-6869-01	TCGA-BA-A6DL-01	TCGA-BB-4227-01	TCGA-BB-7864-01	TCGA-CN-4725-01	TCGA-CN-4727-01	TCGA-CN-4730-01	TCGA-CN-4731-01	TCGA-CN-4736-01	TCGA-CN-4739-01	TCGA-CN-6988-01	TCGA-CN-A49C-01	TCGA-CN-A63W-01	TCGA-CN-A641-01	TCGA-CQ-5327-01	TCGA-CQ-6227-01	TCGA-CQ-7065-01	TCGA-CQ-7069-01	TCGA-CQ-A4C9-01	TCGA-CR-5247-01	TCGA-CR-6477-01	TCGA-CR-6480-01	TCGA-CR-7364-01	TCGA-CR-7365-01	TCGA-CR-7369-01	TCGA-CR-7385-01	TCGA-CV-6952-01	TCGA-CV-6956-01	TCGA-CV-7089-01	TCGA-CV-7095-01	TCGA-CV-7242-01	TCGA-CV-7250-01	TCGA-CV-7253-01	TCGA-CV-7255-01	TCGA-CV-7409-01	TCGA-CV-7568-01	TCGA-CV-A45R-01	TCGA-CX-7086-01	TCGA-D6-A6EO-01	TCGA-F7-7848-01	TCGA-H7-A6C4-01	TCGA-HD-7917-01	TCGA-HD-8224-01	TCGA-IQ-7632-01	TCGA-P3-A5QF-01	TCGA-P3-A6T8-01	TCGA-TN-A7HJ-01	TCGA-UF-A719-01	TCGA-UF-A71D-01
 
-    ```
-   6. splice_burden: splice_burden.txt. A matrix containing the number of Fisher-P significant  over-expressed, under-expressed, and total number of outliers per sample. e.g. 
-    ```
-    OutlierNumberOver	OutlierNumberUnder	TotalOutliers
-TCGA-BA-5152-01	591	44	635
-TCGA-BA-6869-01	660	64	724
-TCGA-BA-A6DL-01	663	74	737
-TCGA-BB-4227-01	869	62	931
-    ```
+    chr1:14829-14970	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+
+    chr1:18369-18501	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+
+    chr1:18366-18913	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+
+    chr1:18554-18913	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE
+
+```
+
+6. splice_burden: splice_burden.txt. A matrix containing the number of Fisher-P significant  over-expressed, under-expressed, and total number of outliers per sample. e.g. 
     
-  7. An RData file with the following data which includes the contents of the txt files noted above:
+```
+    OutlierNumberOver	OutlierNumberUnder	TotalOutliers
 
-  -ASE.type: junction events labeled by type (skipping, insertion, or deletion)
-  
-  -FisherAnalyses: matrix of junction events containing the number of outliers 
-  in the tumor group (outRank), event ranking based on the number of outliers 
-  and tumor under/over expression (var), the Fisher P-Value for under-expressed 
-  events (FisherP1), and the Fisher P-Value for over-expressed events (FisherP2)
-  
-  -geneAnnot: object containing gene names corresponding to each junction region
-  
-  -junc.Outliers: list containing the logical matrices TumorOverExpression and 
-  TumorUnderExpression. "True" indicates an over-expressed event in 
-  TumorOverExpression, or an under-expressed event in TumorUnderExpression.
-  
-  -junc.RPM: junction counts in reads per million following a division of the 
-  junction counts input by the total rawcounts for each sample
+    TCGA-BA-5152-01	591	44	635
+
+    TCGA-BA-6869-01	660	64	724
+
+    TCGA-BA-A6DL-01	663	74	737
+
+    TCGA-BB-4227-01	869	62	931
+```
+ 
+    
+7. An RData file with the following data which includes the contents of the txt files noted above:
+
+    -ASE.type: junction events labeled by type (skipping, insertion, or deletion)
+
+    -FisherAnalyses: matrix of junction events containing the number of outliers   in the tumor group (outRank), event ranking based on the number of outliers  and tumor under/over expression (var), the Fisher P-Value for under-expressed  events (FisherP1), and the Fisher P-Value for over-expressed events (FisherP2)  
+
+    -geneAnnot: object containing gene names corresponding to each junction region
+
+    -junc.Outliers: list containing the logical matrices TumorOverExpression and  TumorUnderExpression. "True" indicates an over-expressed event in TumorOverExpression, or an under-expressed event in TumorUnderExpression.
+
+    -junc.RPM: junction counts in reads per million following a division of the junction counts input by the total rawcounts for each sample
   
   -junc.RPM.norm: junction counts normalized by each event's total gene expression value
   
   -gene_expr: gene expression values for each junction event
   
-  -splice_burden: matrix containing the number of Fisher-P significant 
-  over-expressed, under-expressed, and total number of outliers per sample
+  -splice_burden: matrix containing the number of Fisher-P significant  over-expressed, under-expressed, and total number of outliers per sample
   
-  -NORM.gene_expr.norm: Median of Junction Data Normalized by gene expression for Normal Samples
-  Only (Used for Junction Plotting Only)
+  -NORM.gene_expr.norm: Median of Junction Data Normalized by gene expression for normal samples only (used for junction plotting only)
   
   -pheno: Phenotypes of Samples (Tumor or Normal)
   
@@ -255,7 +277,7 @@ TCGA-BB-4227-01	869	62	931
 
 ### Example Data
 
-
+[Example input data is available on github](https://github.com/genepattern/OutSplice/tree/develop/test/data)
 
 ## Version Comments
 
