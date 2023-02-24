@@ -118,7 +118,7 @@ expression normalized by gene expression.
 - **rawcounts file**<span style="color: red;">*</span>
     - A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample.
 - **sample labels file**
-    - a matrix of phenotypes.
+    - a matrix of phenotypes. Does not need to be provided if the junctions, gene expression, and rawcounts files are from the TCGA.
 - **output file prefix**
     - user defined string for what the prefix of the output file should be named.
 ### Genome Annotation Parameters
