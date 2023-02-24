@@ -129,6 +129,27 @@ if (startsWith(first_lines[2], "junction")){
 
 }
 
+# 
+# ====== Plots of results
+#
+date<-Sys.Date()
+data_file=paste0(opts$out.file.prefix,"_", date, ".RDa")
+print(paste("Looking for ", data_file))
+
+pdf <- paste0( opts$out.file.prefix, "", '_top_overexpressed.pdf')
+pdf_output <- paste0('./', pdf)
+
+#  ===== FOR PLOTTING =====
+# - do we need additional parameters exposed for gene symbol, # junctions to plot, list of juctions (from a file?) 
+# - or does the user need to look at the results first in which case plotting should be a second module so that
+# - they can first see what junctions they want to plot
+# - Alternatively it could be both, just plot the # of top automatically but then have a second plotting module that
+# exposes the rest
+# default number = 10
+
+PlotJunctionData(data_file, NUMBER=10, junctions=NULL, tail='RIGHT', p_value = opts$p.value, GENE=FALSE, SYMBOL=NULL, makepdf=TRUE, pdffile = pdf_output, tumcol='red', normcol='blue')
+
+
 
 
 
