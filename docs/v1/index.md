@@ -46,7 +46,7 @@ to generate RPM junction data.
 2.  **OGSA initial filtering**
 
 The dotheogsa function from the Bioconductor package OGSA is sourced to remove 
-junctions that may not be biologically relevant due to low expression or that have any difference between tumor and normal. 
+junctions that may not be biologically relevant due to low expression or that don't have any difference between tumor and normal. 
 In this package, we set a 0.1 RPM expression threshold for pre-filtering. 
 
 3.  **OGSA outlier analysis**
@@ -112,19 +112,19 @@ expression normalized by gene expression.
 ### Input and Output Parameters
 
 - **junction file**<span style="color: red;">*</span>
-    - This is a tab-delimited text file containing a matrix of junction raw read counts.  
+    - This is a tab-delimited text file containing a matrix of junction raw read counts.   e.g. [example junctions file]([https://raw.githubusercontent.com/genepattern/OutSplice/develop/test/data/HNSC_junctions.txt]), [example TCGA junctions file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_junctions.txt)  
 - **gene expression file**<span style="color: red;">*</span>
-    - A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. 
+    - A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. e.g. [example gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_genes_normalized.txt), [example TCGA gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_genes_normalized.txt) 
 - **rawcounts file**<span style="color: red;">*</span>
-    - A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample.
+    - A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample.e.g. [summable raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_rawcounts_summable_file.txt), [summed raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt)
 - **sample labels file**
-    - a matrix of phenotypes. Does not need to be provided if the junctions, gene expression, and rawcounts files are from the TCGA.
+    - a matrix of phenotypes. Does not need to be provided if the junctions, gene expression, and rawcounts files are from the TCGA.e.g. [example sample labels file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_pheno_table.txt)
 - **output file prefix**
     - user defined string for what the prefix of the output file should be named.
 ### Genome Annotation Parameters
 
 - **preset genome annotation**
-    - Use presets for genome and transcript annotations. This provides a convenient way to set values for the parameters genome, annottion and TxDB for common settings sucg as Hg19, Hg38, mm10 or mm39.  Values selected here will be overridden if values are also provided seperately for the genome, annotation, and TxDB parameters.
+    - Use presets for genome and transcript annotations. This provides a convenient way to set values for the parameters genome, annottion and TxDB for common settings such as Hg19, Hg38, mm10 or mm39.  Values selected here will be overridden if values are also provided seperately for the genome, annotation, and TxDB parameters.
 - **genome**
     - The bioconductor package containing the genome object to use. e.g. "Homo.sapiens".
 - **annotation**
@@ -146,11 +146,11 @@ expression normalized by gene expression.
 
 ## Input Files
 
-1.  Junction file.  Tab delimited file containing junction counts.  First row has sample lables and following rows have chromosomal location or entrez gene ids with counts.  Alternatively TCGA formated junction files are also acceptable.  e.g. [example junctions file]([https://raw.githubusercontent.com/genepattern/OutSplice/develop/test/data/HNSC_junctions.txt](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_junctions.txt)), [example TCGA junctions file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_junctions.txt)  
+1.  Junction file.  Tab delimited file containing junction counts.  First row has sample lables and following rows have chromosomal location or entrez gene ids with counts.  Alternatively TCGA formated junction files are also acceptable.  e.g. [example junctions file]([https://raw.githubusercontent.com/genepattern/OutSplice/develop/test/data/HNSC_junctions.txt]), [example TCGA junctions file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_junctions.txt)  
     
-2. Gene expression file. A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. First row has sample names and subsequent roqs include the data.  TCGA formatted files are also acceptable. e.g. [example gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_genes_normalized.txt), [example TCGA gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_genes_normalized.txt)   
+2. Gene expression file. A matrix of normalized gene expression data. RSEM quartile normalized data is recommended. First row has sample names and subsequent rows include the data.  TCGA formatted files are also acceptable. e.g. [example gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_genes_normalized.txt), [example TCGA gene expression file](https://github.com/genepattern/OutSplice/blob/develop/test/data/TCGA_HNSC_genes_normalized.txt)   
 
-3. Rawcounts file. A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample. e.g. [summable raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt), [summed raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt)
+3. Rawcounts file. A matrix of raw read counts for each gene. Can either be per gene, or a summed total for each sample. e.g. [summable raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_rawcounts_summable_file.txt), [summed raw counts file](https://github.com/genepattern/OutSplice/blob/develop/test/data/Total_Rawcounts.txt)
 
 4. Sample labels file.  A phenotype matrix, in tab-delimited text format, that designates which samples in the junction file belong to the tumor group 
 (labeled as "T") and the normal group (labeled as "F"). Please ensure the  matrix file contains a header row with the first column designating the sample names, and the second column designating the phenotype. If using TCGA data,  the two phenotypes are "tumor" and "normal." OutSplice_TCGA can automatically  infer the phenotype of TCGA data using the sample names.  e.g. [example sample labels file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_pheno_table.txt)
