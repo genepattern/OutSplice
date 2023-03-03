@@ -141,7 +141,7 @@ expression normalized by gene expression.
 - **correction setting**<span style="color: red;">*</span>
     - The correction value to be used for p-value adjustment during Fisher analyses. Uses 'fdr' by default.  Allowed values are fdr, holm, hochberg, hommel, bonferonni, BY.
 - **p value**<span style="color: red;">*</span>
-    - The significance threshold to use during Fisher analyses. Uses 0.05 by default.
+    - The final corrected significance threshold to use during Fisher analyses. Uses 0.05 by default.
 
 
 ## Input Files
