@@ -167,11 +167,11 @@ expression normalized by gene expression.
  
     a.	Github Repo: https://github.com/GuoLabUCSD/OutSpliceFormatter  
 
-*Note: Gene Expression Data does not need to come from RSEM or undergo an upper quartile normalization, but it is what we have been using.
+*Note: Gene Expression Data does not need to come from RSEM or undergo an upper quartile normalization, but it is recommended.
 
 ## TCGA Data
 1.	Data for the TCGA is posted on FireBrowse.
-	  •	Link: https://gdac.broadinstitute.org/
+•		Link: https://gdac.broadinstitute.org/
        
 ## Output Files
 
