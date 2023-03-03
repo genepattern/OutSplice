@@ -154,8 +154,25 @@ expression normalized by gene expression.
 
 4. Sample labels file.  A phenotype matrix, in tab-delimited text format, that designates which samples in the junction file belong to the tumor group 
 (labeled as "T") and the normal group (labeled as "F"). Please ensure the  matrix file contains a header row with the first column designating the sample names, and the second column designating the phenotype. If using TCGA data,  the two phenotypes are "tumor" and "normal." OutSplice_TCGA can automatically  infer the phenotype of TCGA data using the sample names.  e.g. [example sample labels file](https://github.com/genepattern/OutSplice/blob/develop/test/data/HNSC_pheno_table.txt)
-       
 
+## Creating Input Files from User Data
+
+1.	STAR 2.7.1a is used to Align FASTQ files.
+
+
+2.	RSEM 1.3.1 is used to get gene expression data from subsequent BAM files.
+
+
+3.	OutSplice Formatter is used to extract junction counts from STAR’s SJ.out.tab output, rawcounts from STAR’s Log.final.out output, and gene expression data from RSEM’s genes.results output. The tool will then combine them into the appropriate matrix files, perform an upper quartile normalization on the gene expression data, and create a phenotype matrix for OutSplice.
+ 
+a.	Github Repo: https://github.com/GuoLabUCSD/OutSpliceFormatter  
+
+*Note: Gene Expression Data does not need to come from RSEM or undergo an upper quartile normalization, but it is what we have been using.
+
+## TCGA Data
+1.	Data for the TCGA is posted on FireBrowse.
+•	Link: https://gdac.broadinstitute.org/
+       
 ## Output Files
 
   1.ASE.type: <output prefix>_event_types.txt.  Tab-separated text file of junction events with three columns, skipping, insertions, and  deletions.
@@ -271,6 +288,16 @@ skipping	insertions	deletions
 ### Example Data
 
 [Example input data is available on github](https://github.com/genepattern/OutSplice/tree/develop/test/data)
+    
+Our Example RAW DATA: http://firebrowse.org/?cohort=HNSC&download_dialog=true
+
+•	illuminahiseq_rnaseqv2-junction_quantification/ HNSC.rnaseqv2__illuminahiseq_rnaseqv2__unc_edu__Level_3__junction_quantification__data.data.txt 
+
+•	illuminahiseq_rnaseqv2-RSEM_genes_normalized/ HNSC.rnaseqv2__illuminahiseq_rnaseqv2__unc_edu__Level_3__RSEM_genes_normalized__data.data.txt
+
+•	mRNAseq_Preprocess/ HNSC.uncv2.mRNAseq_raw_counts.txt
+
+•	Data was trimmed to 50 Tumors, 44 Normals, and only regions on Chromosome 1 for the example files included with the package.
 
 ## References
 
