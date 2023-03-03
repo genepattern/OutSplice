@@ -139,7 +139,7 @@ expression normalized by gene expression.
 - **offsets value**<span style="color: red;">*</span>
     - The normalized junction expression threshold. Uses 0.00001 by default.
 - **correction setting**<span style="color: red;">*</span>
-    - The correction value to be used for p-value adjustment during Fisher analyses. Uses 'fdr' by default.  Allowed values are fdr, holm, hochberg, hommel, bonferonni, BH, BY.
+    - The correction value to be used for p-value adjustment during Fisher analyses. Uses 'fdr' by default.  Allowed values are fdr, holm, hochberg, hommel, bonferonni, BY.
 - **p value**<span style="color: red;">*</span>
     - The significance threshold to use during Fisher analyses. Uses 0.05 by default.
 
