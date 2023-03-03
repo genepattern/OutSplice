@@ -171,7 +171,8 @@ expression normalized by gene expression.
 
 ## TCGA Data
 1.	Data for the TCGA is posted on FireBrowse.
-•		Link: https://gdac.broadinstitute.org/
+
+•   Link: https://gdac.broadinstitute.org/
        
 ## Output Files
 
