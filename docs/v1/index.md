@@ -165,13 +165,13 @@ expression normalized by gene expression.
 
 3.	OutSplice Formatter is used to extract junction counts from STAR’s SJ.out.tab output, rawcounts from STAR’s Log.final.out output, and gene expression data from RSEM’s genes.results output. The tool will then combine them into the appropriate matrix files, perform an upper quartile normalization on the gene expression data, and create a phenotype matrix for OutSplice.
  
-a.	Github Repo: https://github.com/GuoLabUCSD/OutSpliceFormatter  
+    a.	Github Repo: https://github.com/GuoLabUCSD/OutSpliceFormatter  
 
 *Note: Gene Expression Data does not need to come from RSEM or undergo an upper quartile normalization, but it is what we have been using.
 
 ## TCGA Data
 1.	Data for the TCGA is posted on FireBrowse.
-•	Link: https://gdac.broadinstitute.org/
+	  •	Link: https://gdac.broadinstitute.org/
        
 ## Output Files
 
@@ -285,7 +285,7 @@ skipping	insertions	deletions
   
   -pvalues: Junction Fisher P-values
   
-### Example Data
+## Example Data
 
 [Example input data is available on github](https://github.com/genepattern/OutSplice/tree/develop/test/data)
     
