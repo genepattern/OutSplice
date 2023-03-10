@@ -45,7 +45,7 @@ p11_value=
 p12_MODE=
 p12_TYPE=TEXT
 p12_default_value=fdr
-p12_description=The final corrected significance threshold to use during Fisher analyses. Uses 'fdr' by default. 
+p12_description=The correction value to be used for p-value adjustment during Fisher analyses. Uses ‘fdr’ by default. Allowed values are fdr, holm, hochberg, hommel, bonferonni, BY.
 p12_fileFormat=
 p12_flag=--correction.setting 
 p12_name=correction.setting
@@ -58,7 +58,7 @@ p12_value=fdr\=fdr;holm\=holm;hochberg\=hochberg;hommel\=hommel;bonferroni\=bonf
 p13_MODE=
 p13_TYPE=Floating Point
 p13_default_value=.05
-p13_description=The significance threshold to use during Fisher analyses. Uses 0.05 by default.
+p13_description=The final corrected significance threshold to use during Fisher analyses. Uses 0.05 by default.
 p13_fileFormat=
 p13_flag=--p.value  
 p13_name=p.value
