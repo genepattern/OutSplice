@@ -13,7 +13,6 @@
     },
     {
         "name": "Genome Annotations",
-        "description": "Genome and annotations to use.",
         "hidden": false,
         "parameters": [
             "genome.annotations"
