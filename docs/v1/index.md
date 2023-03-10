@@ -123,14 +123,8 @@ expression normalized by gene expression.
     - user defined string for what the prefix of the output file should be named.
 ### Genome Annotation Parameters
 
-- **preset genome annotation**
-    - Use presets for genome and transcript annotations. This provides a convenient way to set values for the parameters genome, annottion and TxDB for common settings such as Hg19, Hg38, mm10 or mm39.  Values selected here will be overridden if values are also provided seperately for the genome, annotation, and TxDB parameters.
-- **genome**
-    - The bioconductor package containing the genome object to use. e.g. "Homo.sapiens".
-- **annotation**
-    - The bioconductor package containing the annotations to use. e.g. "org.Hs.eg.db" or "org.Mm.eg.db".
-- **TxDB**
-    - The bioconductor package containing the transcript annotations to use. e.g. "TxDb.Hsapiens.UCSC.hg38.knownGene", or "TxDb.Hsapiens.UCSC.hg19.knownGene" for TCGA data.
+- **genome annotation**
+    - Select the genome and transcript annotations. This provides will set values for the  genome, annottion and transcript annotations for common settings such as Hg19, Hg38, mm10 or mm39. 
 
 ### Advanced Parameters
 
