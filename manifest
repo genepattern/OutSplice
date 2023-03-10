@@ -191,5 +191,5 @@ src.repo=https\://github.com/genepattern/OutSplice
 taskDoc=
 taskType=beta
 userid=ted
-version=Added docker container, parameter descriptions and paramgroups
+version=Updating parameter names in  paramgroups
 

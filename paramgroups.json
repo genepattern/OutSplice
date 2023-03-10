@@ -5,7 +5,7 @@
         "hidden": false,
         "parameters": [
             "junction.file",
-            "rsem.file",
+            "gene.expression.file",
             "rawcounts.file",
             "sample.labels.file",
             "out.file.prefix"
