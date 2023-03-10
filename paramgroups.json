@@ -13,13 +13,10 @@
     },
     {
         "name": "Genome Annotations",
-        "description": "Genome and annotations to use, either a preset or provide override values.",
+        "description": "Genome and annotations to use.",
         "hidden": false,
         "parameters": [
-            "preset.genome.annotations",
-            "genome",
-            "annotation",
-            "txdb"
+            "genome.annotations"
         ]
     },
     {
