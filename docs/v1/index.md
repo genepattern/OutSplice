@@ -124,7 +124,7 @@ expression normalized by gene expression.
 ### Genome Annotation Parameters
 
 - **genome annotation**
-    - Select the genome and transcript annotations. This provides will set values for the  genome, annottion and transcript annotations for common settings such as Hg19, Hg38, mm10 or mm39. 
+    - Select the genome and transcript annotations. This provides will set values for the  genome, annotation and transcript annotations for Hg19, Hg38, mm10 or mm39. 
 
 ### Advanced Parameters
 
