@@ -1,6 +1,6 @@
 # copyright 2017-2018 Regents of the University of California and the Broad Institute. All rights reserved.
 
-FROM r-base:4.2.2
+FROM r-base:4.3.1
 
 RUN apt-get update  && \
     apt-get install -t unstable libssl-dev  --yes && \
