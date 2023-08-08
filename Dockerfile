@@ -18,13 +18,16 @@ RUN apt-get update  && \
 RUN apt-get update && apt-get install -t unstable pandoc --yes
 RUN mkdir -p /build/source/
 
-COPY install_stuff.R /build/source/install_stuff.R
+COPY install_prereqs.R /build/source/install_prereqs.R
 
 # temporary untill the biocinstaller is in place
 RUN cd /build/source && \
-    rm -f OutSplice.tar.gz && \
-    wget https://github.com/GuoLabUCSD/OutSplice/tarball/GenePatternNotebook -O OutSplice.tar.gz  && \
-    Rscript /build/source/install_stuff.R 
+    Rscript /build/source/install_prereqs.R 
+
+COPY install_outsplice.R /build/source/install_outsplice.R
+RUN cd /build/source && \
+    Rscript /build/source/install_outsplice.R
+
 
 COPY outsplice_wrapper.R /build/source/outsplice_wrapper.R
 

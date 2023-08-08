@@ -26,7 +26,11 @@
             "filter.sex",
             "offsets.value",
             "correction.setting",
-            "p.value"
+            "p.value",
+            "use_junc_col",
+            "use_gene_col",
+            "use_rc_col",
+            "use_labels_col"
         ]
     }
 ]

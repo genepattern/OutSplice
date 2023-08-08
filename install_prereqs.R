@@ -19,8 +19,8 @@ BiocManager::install("TxDb.Mmusculus.UCSC.mm10.knownGene")
 BiocManager::install("TxDb.Mmusculus.UCSC.mm39.refGene")
 BiocManager::install("org.Mm.eg.db")
 
-install.packages("/build/source/OutSplice.tar.gz", repos = NULL, type = "source")
-
+# install.packages("/build/source/OutSplice.tar.gz", repos = NULL, type = "source")
+#BiocManager::install("OutSplice")
 
 
 print("<-#-> Install complete")

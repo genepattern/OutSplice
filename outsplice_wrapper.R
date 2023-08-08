@@ -48,13 +48,15 @@ option_list <- list(
   make_option("--dir", dest="dir", default="")  ,
   make_option("--filter.sex", dest="filter.sex", type="logical"),
   make_option("--preset.genome.annotation", dest="preset.genome.annotation", default="hg38"),
-  make_option("--genome", dest="genome", default=""),
   make_option("--annotation", dest="annotation",default=""),
   make_option("--txdb", dest="txdb",default=""),
   make_option("--offsets.value", dest="offsets.value", type="double"),
   make_option("--correction.setting", dest="correction.setting"),
-  make_option("--p.value", dest="p.value", type="double")
-
+  make_option("--p.value", dest="p.value", type="double"),
+  make_option("--use_junc_col", dest="use_junc_col", type="int", default="1"),
+  make_option("--use_gene_col", dest="use_gene_col", type="int", default="1"),
+  make_option("--use_rc_col", dest="use_rc_col", type="int", default="1"),
+  make_option("--use_labels_col", dest="use_labels_col", type="int", default="1")
 )
 
 # Parse the command line arguments with the option list, printing the result
@@ -77,42 +79,45 @@ if (!(endsWith(outdir, '/'))){
    outdir = paste(outdir, '/', sep="")
 }
 
-print(opts$preset.genome.annotation)
 
 # set the default genome and annotations and then override if the optional overrides are provided
 if (tolower(opts$preset.genome.annotation) == tolower("hg19")){
     # --genome Homo.sapiens --annotation org.Hs.eg.db  --txdb TxDb.Hsapiens.UCSC.hg38.knownGene
-    genome =  "Homo.sapiens"
+    #genome =  "Homo.sapiens"
     annotation = "org.Hs.eg.db"
     txdb = "TxDb.Hsapiens.UCSC.hg19.knownGene"
+    library(Homo.sapiens)
+    library(org.Hs.eg.db)
+    library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 } else if (tolower(opts$preset.genome.annotation) == tolower("hg38")){
-    genome = "Homo.sapiens"
+    #genome = "Homo.sapiens"
     annotation = "org.Hs.eg.db"
     txdb = "TxDb.Hsapiens.UCSC.hg38.knownGene"
+    library(Homo.sapiens)
+    library(org.Hs.eg.db)
+    library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 } else if (tolower(opts$preset.genome.annotation) == tolower("mm39")){
-    genome = "Mus.musculus"
+    #genome = "Mus.musculus"
     annotation = "org.Mm.eg.db"
     txdb = "TxDb.Mmusculus.UCSC.mm39.refGene"
+    library(Mus.musculus)
+    library(org.Mm.eg.db)
+    library(TxDb.Mmusculus.UCSC.mm39.refGene)
 } else if (tolower(opts$preset.genome.annotation) == tolower("mm10")){
-    genome = "Mus.musculus"
+    #genome = "Mus.musculus"
     annotation = "org.Mm.eg.db"
     txdb = "TxDb.Mmusculus.UCSC.mm10.knownGene"
+    library(Mus.musculus)
+    library(org.Mm.eg.db)
+    library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 }
 
-if (!(is.emptyString(opts$genome))) {
-     genome = opts$genome
-}
 if (!(is.emptyString(opts$annotation))) {
      annotation = opts$annotation
 }
 if (!(is.emptyString(opts$txdb))) {
      txdb = opts$txdb
 }
-print("=====")
-print(genome)
-print(annotation)
-print(txdb)
-print("=====")
 
 
 # read the second line of the junction file to see if its TCGA format where the second line
@@ -122,10 +127,10 @@ first_lines <- readLines(con,n=2)
 close(con)
 
 if (startsWith(first_lines[2], "junction")){
-    OutSplice_TCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex, genome, annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+    outspliceTCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex,  annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value, saveOutput=TRUE)
 
 } else { 
-    OutSplice(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex, genome, annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value)
+    outspliceAnalysis(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex,  annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value, use_junc_col=opts$use_junc_col,use_gene_col=opts$use_gene_col,use_rc_col==opts$use_rc_col,use_labels_col=opts$use_labels_col, saveOutput=TRUE )
 
 }
 

@@ -29,6 +29,7 @@ p10_prefix=--preset.genome.annotation
 p10_prefix_when_specified=--preset.genome.annotation 
 p10_type=java.lang.String
 p10_value=Hg19\=Hg19;Hg38\=Hg38;mm39\=mm39;mm10\=mm10
+
 p1_MODE=IN
 p1_TYPE=FILE
 p1_default_value=
@@ -146,6 +147,65 @@ p9_prefix=--p.value
 p9_prefix_when_specified=--p.value  
 p9_type=java.lang.Float
 p9_value=
+
+p11_MODE=
+p11_TYPE=Integer
+p11_default_value=1
+p11_description=An integer indicating which column in the junction matrix contains the junction regions in your matrices. Uses 1 by default.
+p11_fileFormat=
+p11_flag=--use_row_col
+p11_name=use_row_col
+p11_numValues=0..1
+p11_optional=
+p11_prefix=--use_row_col
+p11_prefix_when_specified=--use_row_col
+p11_type=java.lang.Integer
+p11_value=1
+
+p12_MODE=
+p12_TYPE=Integer
+p12_default_value=1
+p12_description=.An integer indicating which column in the gene_expr matrix contains the entrez ids of your genes Uses 1 by default.
+p12_fileFormat=
+p12_flag=--use_gene_col
+p12_name=use_gene_col
+p12_numValues=0..1
+p12_optional=
+p12_prefix=--use_gene_col
+p12_prefix_when_specified=--use_gene_col
+p12_type=java.lang.Integer
+p12_value=1
+
+p13_MODE=
+p13_TYPE=Integer
+p13_default_value=1
+p13_description=An integer indicating which column in the rawcounts matrix contains the row names. Uses 1 by default.
+p13_fileFormat=
+p13_flag=--use_rc_col
+p13_name=use_rc_col
+p13_numValues=0..1
+p13_optional=
+p13_prefix=--use_rc_col
+p13_prefix_when_specified=--use_rc_col
+p13_type=java.lang.Integer
+p13_value=1
+
+p14_MODE=
+p14_TYPE=Integer
+p14_default_value=1
+p14_description=An integer indicating which column in the sample_labels matrix contains the sample names. Uses 1 by default.
+p14_fileFormat=
+p14_flag=--use_labels_col
+p14_name=use_labels_col
+p14_numValues=0..1
+p14_optional=
+p14_prefix=--use_labels_col
+p14_prefix_when_specified=--use_labels_col
+p14_type=java.lang.Integer
+p14_value=1
+
+
+
 privacy=public
 publicationDate=03/10/2023 12\:15 
 quality=preproduction
