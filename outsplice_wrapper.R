@@ -53,10 +53,10 @@ option_list <- list(
   make_option("--offsets.value", dest="offsets.value", type="double"),
   make_option("--correction.setting", dest="correction.setting"),
   make_option("--p.value", dest="p.value", type="double"),
-  make_option("--use_junc_col", dest="use_junc_col", type="int", default="1"),
-  make_option("--use_gene_col", dest="use_gene_col", type="int", default="1"),
-  make_option("--use_rc_col", dest="use_rc_col", type="int", default="1"),
-  make_option("--use_labels_col", dest="use_labels_col", type="int", default="1")
+  make_option("--use_junc_col", dest="use_junc_col", type="integer", default="1"),
+  make_option("--use_gene_col", dest="use_gene_col", type="integer", default="1"),
+  make_option("--use_rc_col", dest="use_rc_col", type="integer", default="1"),
+  make_option("--use_labels_col", dest="use_labels_col", type="integer", default="1")
 )
 
 # Parse the command line arguments with the option list, printing the result
@@ -130,7 +130,7 @@ if (startsWith(first_lines[2], "junction")){
     outspliceTCGA(junction, rsem, rawcounts,  opts$out.file.prefix, outdir, filterSex=opts$filter.sex,  annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value, saveOutput=TRUE)
 
 } else { 
-    outspliceAnalysis(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex,  annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value, use_junc_col=opts$use_junc_col,use_gene_col=opts$use_gene_col,use_rc_col==opts$use_rc_col,use_labels_col=opts$use_labels_col, saveOutput=TRUE )
+    outspliceAnalysis(junction, rsem, rawcounts, sample_labels, opts$out.file.prefix, outdir, filterSex=opts$filter.sex,  annotation=annotation, TxDb=txdb, offsets_value=opts$offsets.value, correction_setting=opts$correction.setting, p_value=opts$p.value, use_junc_col=opts$use_junc_col,use_gene_col=opts$use_gene_col,use_rc_col=opts$use_rc_col,use_labels_col=opts$use_labels_col, saveOutput=TRUE )
 
 }
 
@@ -139,6 +139,7 @@ if (startsWith(first_lines[2], "junction")){
 #
 date<-Sys.Date()
 data_file=paste0(opts$out.file.prefix,"_", date, ".RDa")
+data_file=paste0(outdir,"/",data_file)
 print(paste("Looking for ", data_file))
 
 pdf <- paste0( opts$out.file.prefix, "", '_top_overexpressed.pdf')
@@ -151,8 +152,10 @@ pdf_output <- paste0('./', pdf)
 # - Alternatively it could be both, just plot the # of top automatically but then have a second plotting module that
 # exposes the rest
 # default number = 10
+exts <- file.exists(data_file)
+print(paste0("datafile exists ", exts))
 
-PlotJunctionData(data_file, NUMBER=10, junctions=NULL, tail='RIGHT', p_value = opts$p.value, GENE=FALSE, SYMBOL=NULL, makepdf=TRUE, pdffile = pdf_output, tumcol='red', normcol='blue')
+plotJunctionData(data_file, NUMBER=10, junctions=NULL, tail='RIGHT', p_value = opts$p.value, GENE=FALSE, SYMBOL=NULL, makepdf=TRUE, pdffile = pdf_output, tumcol='red', normcol='blue')
 
 
 
