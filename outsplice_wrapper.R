@@ -19,9 +19,13 @@ suppressMessages(suppressWarnings(library(optparse)))
 suppressMessages(suppressWarnings(library(limma)))
 suppressMessages(suppressWarnings(library(GenomicRanges)))
 suppressMessages(suppressWarnings(library(TxDb.Hsapiens.UCSC.hg38.knownGene)))
+suppressMessages(suppressWarnings(library(TxDb.Hsapiens.UCSC.hg19.knownGene)))
+suppressMessages(suppressWarnings(library(TxDb.Mmusculus.UCSC.mm10.knownGene)))
+suppressMessages(suppressWarnings(library(TxDb.Mmusculus.UCSC.mm39.refGene)))
 suppressMessages(suppressWarnings(library(org.Hs.eg.db)))
 suppressMessages(suppressWarnings(library(Homo.sapiens)))
 suppressMessages(suppressWarnings(library(OutSplice)))
+
 
 
 # Print the sessionInfo so that there is a listing of loaded packages, 
