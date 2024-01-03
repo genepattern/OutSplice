@@ -3,12 +3,12 @@
 JVMLevel=
 LSID=urn\:lsid\:genepattern.org\:module.analysis\:00431\:0.9
 author=Joseph Bendik;UCSD
-categories=beta
+categories=alternative splicing
 commandLine=Rscript /build/source/outsplice_wrapper.R <junction.file> <gene.expression.file> <rawcounts.file>     <out.file.prefix> <filter.sex>    <offsets.value> <correction.setting> <p.value>   <sample.labels.file>   <genome.annotations> <use_junc_col> <use_gene_col> <use_rc_col> <use_labels_col>
 cpuType=any
 description=OutSplice is a package that compares alternative splicing events between tumor and normal samples. This package is specifically designed for analyzing the gene and junction information from RNA sequencing data provided by the user, or from the TCGA. This package generates a matrix of splicing outliers, which are junctions that are either significantly over or under-expressed compared to a control sample. OutSplice further designates observed outliers as skipping, insertion, or deletion events. Overall, OutSplice is novel in that it determines differential splicing burdens between tumors and normal samples and characterizes the nature of splicing outliers.
 documentationUrl=https\://genepattern.github.io/OutSplice/v1/
-fileFormat=
+fileFormat=.RDa;.rda;RData;rdata
 job.cpuCount=
 job.docker.image=genepattern/outsplice\:0.4
 job.memory=
